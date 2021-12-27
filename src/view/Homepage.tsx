@@ -24,3 +24,6 @@ const Homepage: React.FunctionComponent<IPageProps> = props => {
 }
 
 export default Homepage;
+
+
+//tsrsfc gives you the typescript skeleton

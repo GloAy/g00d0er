@@ -17,7 +17,7 @@ const AuthContainer: React.FunctionComponent<IAuthContainerProps> = props => {
                     lg={{ size: 4, offset: 4 }}
                 >
                     <Card className='mt-5'>
-                        <CardHeader className="bg-primary text-white">
+                        <CardHeader className="bg-light text-black">
                             {header}
                         </CardHeader>
                         <CardBody>

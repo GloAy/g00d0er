@@ -6,7 +6,7 @@ import { auth } from '../config/firebaseSetup';
 import login from '../config/login';
 import IPageProps from '../../interfaces/page.interface';
 import ErrorMessage from '../../errormessage/errormessage';
-import Homepage from '../Homepage';
+
 
 
 const SigninPage: React.FunctionComponent<IPageProps> = props => {
@@ -60,7 +60,7 @@ const SigninPage: React.FunctionComponent<IPageProps> = props => {
             </FormGroup>
             <Button
                 disabled={authenticating}
-                color="success"
+                color="dark"
                 block
                 onClick={() => signInWithEmailAndPassword()}
             >
