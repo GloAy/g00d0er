@@ -34,6 +34,7 @@ const Application: React.FunctionComponent<IApplicationProps> = props => {
 
     return (
         <div>
+
             <Routes>
             <Route
             path='/'
@@ -55,10 +56,8 @@ const Application: React.FunctionComponent<IApplicationProps> = props => {
             path='/change'
             element={<ChangePasswordPage name={'Change Password Page'} />}
             />
-            
             </Routes>
-            
-                    </div>
+        </div>
     );
 }
 
