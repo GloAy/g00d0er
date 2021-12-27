@@ -6,6 +6,7 @@ import { auth } from '../config/firebaseSetup';
 import login from '../config/login';
 import IPageProps from '../../interfaces/page.interface';
 import ErrorMessage from '../../errormessage/errormessage';
+import '../../App.css'
 
 
 
@@ -37,7 +38,7 @@ const SigninPage: React.FunctionComponent<IPageProps> = props => {
 
     return (
         <AuthContainer header="Login">
-            <FormGroup>
+            <FormGroup >
                 <Input 
                     type="email"
                     name="email"
@@ -63,8 +64,9 @@ const SigninPage: React.FunctionComponent<IPageProps> = props => {
                 color="dark"
                 block
                 onClick={() => signInWithEmailAndPassword()}
+                className="submit"
             >
-                Login
+                Sign In
             </Button>
             <small>
                 <p className='m-1 text-center'>Don't have an account? <Link to="/signup">Register here.</Link></p>

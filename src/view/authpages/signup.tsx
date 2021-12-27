@@ -6,6 +6,7 @@ import { auth } from '../config/firebaseSetup';
 import login from '../config/login';
 import IPageProps from '../../interfaces/page.interface';
 import ErrorMessage from '../../errormessage/errormessage';
+import '../../App.css'
 
 const SignupPage: React.FunctionComponent<IPageProps> = props => {
     const [registering, setRegistering] = useState<boolean>(false);
@@ -53,7 +54,7 @@ const SignupPage: React.FunctionComponent<IPageProps> = props => {
     }
 
     return (
-        <AuthContainer header="Sign Up for an Account">
+        <AuthContainer header="Create an Account">
             <FormGroup>
                 <Input 
                     type="email"
@@ -91,11 +92,12 @@ const SignupPage: React.FunctionComponent<IPageProps> = props => {
                 color="success"
                 block
                 onClick={() => signUpWithEmailAndPassword()}
+                className="submit"
             >
                 Sign Up
             </Button>
             <small>
-                <p className='m-1 text-center'>Already have an account? <Link to="/signin">Signin.</Link></p>
+                <p className='m-1 text-center'>Already have an account? <Link to="/">Signin.</Link></p>
             </small>
             <ErrorMessage error={error} />
         </AuthContainer>

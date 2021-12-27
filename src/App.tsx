@@ -8,6 +8,7 @@ import SignupPage from './view/authpages/signup'
 import SigninPage from './view/authpages/signin';
 import ForgotPasswordPage from './view/authpages/forget';
 import ChangePasswordPage from './view/authpages/change';
+import './App.css'
 
 export interface IApplicationProps { }
 
@@ -33,7 +34,7 @@ const Application: React.FunctionComponent<IApplicationProps> = props => {
         return <Spinner color="info" />
 
     return (
-        <div>
+        <div className="page-container">
 
             <Routes>
             <Route
