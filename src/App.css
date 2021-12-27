@@ -1,8 +1,12 @@
-.navbar {
+.body {
+  background-color: #fa7878;
+}
+
+/* .navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
   font-size: 30px;
   font-weight: bolder;
   font-style: italic;
-}
+} */

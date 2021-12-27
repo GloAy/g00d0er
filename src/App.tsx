@@ -1,79 +1,58 @@
-import React, { useContext, useRef } from "react";
-import { Stack, Button, Container, Form, Navbar } from "react-bootstrap";
-import { AuthContext } from "./context/AuthContext";
-import { auth } from "./firebaseSetup";
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { Route,  Routes } from 'react-router-dom';
+import { Spinner } from 'reactstrap';
+import { auth } from './view/config/firebaseSetup';
+import login from './view/config/login';
+import Homepage from './view/Homepage';
+import SignupPage from './view/pages/signup'
+import SigninPage from './view/pages/signin';
+import ForgotPasswordPage from './view/pages/forget';
 
+export interface IApplicationProps { }
 
-function App() {
-  const user = useContext(AuthContext);
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-  
-  //useRef creates an object that will hold on to values even when state changes and the component re-renders. This makes it very useful for doing things like tracking the previous state or counting how many times a state changes.
+const Application: React.FunctionComponent<IApplicationProps> = props => {
+    const [loading, setLoading] = useState<boolean>(true);
 
-  const signUp = async () => {
-    try {
-      await auth.createUserWithEmailAndPassword(
-        emailRef.current!.value,
-        passwordRef.current!.value
-      );
-    } catch (error) {
-      console.log(error)
-    }
-  }
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            if (user)
+            {
+                login.info('User detected.');
+            }
+            else
+            {
+                login.info('No user detected');
+            }
 
-  const signIn = async () => {
-    try {
-     await auth.signInWithEmailAndPassword(
-       emailRef.current!.value,
-       passwordRef.current!.value
-     ) 
-    } catch (error) {
-      console.log(error)
-    }
-  }
+            setLoading(false);
+        })
+    }, []);
 
-  const signOut = async () =>{
-    await auth.signOut()
-  }
+    if (loading)
+        return <Spinner color="info" />
 
-  return (
-    <div className="main">
-      <Navbar className="nav-bar" variant="dark">
-        <Navbar.Brand >g00doer</Navbar.Brand>
-        <Button onClick={signOut}
-        type="button" variant="secondary">
-          Sign Out
-      </Button>
-      </Navbar>
-      {!user ? (
-      <Container style={{ maxWidth: "500px" }} fluid>
-        <Form className="mt-4">
-          <Form.Group controlId="formEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control ref={emailRef} type="email" placeholder="email" />
-          </Form.Group>
-          <Form.Group controlId="formPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control 
-            ref={passwordRef} type="password" placeholder="password" />
-          </Form.Group>
-          <Form>
-          <Stack gap={2} direction="horizontal" className="col-md-5 mx-auto">
-          <Button onClick={signIn}
-              type="button"  variant="secondary" aria-label="Third group">
-                Sign In
-              </Button>
-              <Button onClick={signUp}type="button" aria-label="Third group">
-                Sign Up
-              </Button>
-          </Stack>
-          </Form>
-        </Form>
-      </Container> ) : (<h3>Welcome</h3> )}
-    </div>
-  );
+    return (
+        <div>
+            <Routes>
+            <Route
+            path='/signin'
+            element={<SigninPage name={'Signin Page'} />}
+            />
+            <Route
+            path='/signup'
+            element={<SignupPage name={'Signup Page'} />}
+            />
+            <Route
+            path='/'
+            element={<Homepage name={'HomePage'} />}
+            />
+            <Route
+            path='/forget'
+            element={<ForgotPasswordPage name={'Forgot Password Page'} />}
+            />
+            </Routes>
+        </div>
+    );
 }
 
-export default App;
+export default Application;
