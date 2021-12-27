@@ -1,10 +1,10 @@
 import IRoute from "../../interfaces/route.interface";
-import ChangePasswordPage from "../pages/change";
-import ForgotPasswordPage from "../pages/forget";
-import SigninPage from "../pages/signin";
-import SignoutPage from "../pages/signout";
+import ChangePasswordPage from "../authpages/change";
+import ForgotPasswordPage from "../authpages/forget";
+import SigninPage from "../authpages/signin";
+import SignoutPage from "../authpages/signout";
 import HomePage from "../Homepage";
-import SignupPage from "../pages/signup"
+import SignupPage from "../authpages/signup"
 
 const routes: IRoute[] = [
     {

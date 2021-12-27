@@ -6,6 +6,7 @@ import { auth } from '../config/firebaseSetup';
 import login from '../config/login';
 import IPageProps from '../../interfaces/page.interface';
 import ErrorMessage from '../../errormessage/errormessage';
+import Homepage from '../Homepage';
 
 
 const SigninPage: React.FunctionComponent<IPageProps> = props => {
@@ -24,7 +25,7 @@ const SigninPage: React.FunctionComponent<IPageProps> = props => {
         auth.signInWithEmailAndPassword(email, password)
         .then(result => {
             login.info(result);
-            navigate('/');
+            navigate('/homepage');
         })
         .catch(error => {
             login.error(error);

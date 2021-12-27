@@ -4,9 +4,10 @@ import { Spinner } from 'reactstrap';
 import { auth } from './view/config/firebaseSetup';
 import login from './view/config/login';
 import Homepage from './view/Homepage';
-import SignupPage from './view/pages/signup'
-import SigninPage from './view/pages/signin';
-import ForgotPasswordPage from './view/pages/forget';
+import SignupPage from './view/authpages/signup'
+import SigninPage from './view/authpages/signin';
+import ForgotPasswordPage from './view/authpages/forget';
+import ChangePasswordPage from './view/authpages/change';
 
 export interface IApplicationProps { }
 
@@ -35,7 +36,7 @@ const Application: React.FunctionComponent<IApplicationProps> = props => {
         <div>
             <Routes>
             <Route
-            path='/signin'
+            path='/'
             element={<SigninPage name={'Signin Page'} />}
             />
             <Route
@@ -43,15 +44,21 @@ const Application: React.FunctionComponent<IApplicationProps> = props => {
             element={<SignupPage name={'Signup Page'} />}
             />
             <Route
-            path='/'
+            path='/homepage'
             element={<Homepage name={'HomePage'} />}
             />
             <Route
             path='/forget'
             element={<ForgotPasswordPage name={'Forgot Password Page'} />}
             />
+            <Route
+            path='/change'
+            element={<ChangePasswordPage name={'Change Password Page'} />}
+            />
+            
             </Routes>
-        </div>
+            
+                    </div>
     );
 }
 

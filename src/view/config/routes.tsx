@@ -1,14 +1,14 @@
 import IRoute from "../../interfaces/route.interface";
-import ChangePasswordPage from "../pages/change";
-import ForgotPasswordPage from "../pages/forget";
-import SigninPage from "../pages/signin";
-import SignOut from "../pages/signout";
-import SignupPage from "../pages/signup";
+import ChangePasswordPage from "../authpages/change";
+import ForgotPasswordPage from "../authpages/forget";
+import SigninPage from "../authpages/signin";
+import SignOut from "../authpages/signout";
+import SignupPage from "../authpages/signup";
 import HomePage from "../Homepage";
 
 const routes: IRoute[] = [
     {
-        path: '/',
+        path: '/homepage',
         element: HomePage,
         name: 'Home Page',
         protected: true
@@ -20,7 +20,7 @@ const routes: IRoute[] = [
         protected: false
     },
     {
-        path: '/signin',
+        path: '/',
         element: SigninPage,
         name: 'SignIn Page',
         protected: false
