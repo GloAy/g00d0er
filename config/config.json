@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({path: 'path/env.development'});
 
 module.exports = {
   development: {
@@ -25,7 +25,3 @@ module.exports = {
     dialect: "postgres",
   },
 };
-
-
-
-// The keys of the objects (e.g. "development") are used on model/index.js for matching process.env.NODE_ENV (When undefined, "development" is a default value).
